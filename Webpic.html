@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pendataan Nama per Kelompok</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    select, input, button {
+      padding: 5px;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .group {
+      border: 1px solid #333;
+      border-radius: 5px;
+      padding: 10px;
+      width: 200px;
+    }
+    .group h3 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pendataan Nama 7 Kelompok</h1>
 
+  <form id="form">
+    <input type="text" id="nama" placeholder="Masukkan nama" required>
+    <select id="kelompok">
+      <option value="">Pilih Kelompok</option>
+      <option value="1">Kelompok 1</option>
+      <option value="2">Kelompok 2</option>
+      <option value="3">Kelompok 3</option>
+      <option value="4">Kelompok 4</option>
+      <option value="5">Kelompok 5</option>
+      <option value="6">Kelompok 6</option>
+      <option value="7">Kelompok 7</option>
+    </select>
+    <button type="submit">Tambah</button>
+  </form>
+
+  <div class="container">
+    <div class="group"><h3>Kelompok 1</h3><ul id="list-1"></ul></div>
+    <div class="group"><h3>Kelompok 2</h3><ul id="list-2"></ul></div>
+    <div class="group"><h3>Kelompok 3</h3><ul id="list-3"></ul></div>
+    <div class="group"><h3>Kelompok 4</h3><ul id="list-4"></ul></div>
+    <div class="group"><h3>Kelompok 5</h3><ul id="list-5"></ul></div>
+    <div class="group"><h3>Kelompok 6</h3><ul id="list-6"></ul></div>
+    <div class="group"><h3>Kelompok 7</h3><ul id="list-7"></ul></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("form");
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nama = document.getElementById("nama").value.trim();
+      const kelompok = document.getElementById("kelompok").value;
+
+      if (nama && kelompok) {
+        const li = document.createElement("li");
+        li.textContent = nama;
+        document.getElementById("list-" + kelompok).appendChild(li);
+
+        // reset form
+        document.getElementById("nama").value = "";
+        document.getElementById("kelompok").value = "";
+      }
+    });
+  </script>
+</body>
+</html>
